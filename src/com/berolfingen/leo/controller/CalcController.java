@@ -108,7 +108,7 @@ public class CalcController {
                     });
                     break;
                 case "+":
-                    //todo: сделать, чтобы работало и без очищения экрана
+                    //todo: сделать, чтобы работало и без очищения экрана и float
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -128,6 +128,26 @@ public class CalcController {
                         }
                     });
                     break;
+                case "*":
+                    list.get(i).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            previousValue = Integer.parseInt(display.getText());
+                            display.setText("");
+                            operation = "*";
+                        }
+                    });
+                    break;
+                case "/":
+                    list.get(i).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            previousValue = Integer.parseInt(display.getText());
+                            display.setText("");
+                            operation = "/";
+                        }
+                    });
+                    break;
                 case "=":
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
@@ -138,6 +158,12 @@ public class CalcController {
                             }
                             if ("-".equals(operation)) {
                                 display.setText(Integer.toString(previousValue - secondValue));
+                            }
+                            if ("*".equals(operation)) {
+                                display.setText(Integer.toString(previousValue * secondValue));
+                            }
+                            if ("/".equals(operation)) {
+                                display.setText(Integer.toString(previousValue / secondValue));
                             }
                         }
                     });
