@@ -4,12 +4,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 public class CalcController {
 
-    private static int previousValue = 0;
+    private static double previousValue = 0;
     private static String operation = "";
+    private static final String root = "\u221A";
 
     public static List<ActionEvent> actions = new ArrayList<>();
 
@@ -21,6 +23,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "0");
                         }
 
@@ -30,6 +33,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "1");
                         }
                     });
@@ -38,6 +42,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "2");
                         }
                     });
@@ -46,6 +51,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "3");
                         }
                     });
@@ -54,6 +60,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "4");
                         }
                     });
@@ -62,6 +69,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "5");
                         }
                     });
@@ -70,6 +78,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "6");
                         }
                     });
@@ -78,6 +87,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "7");
                         }
                     });
@@ -86,6 +96,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "8");
                         }
                     });
@@ -94,6 +105,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "9");
                         }
                     });
@@ -102,8 +114,17 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("");
                             String temp = display.getText();
                             if (temp.length() > 0) display.setText(temp.substring(0, temp.length() - 1));
+                        }
+                    });
+                    break;
+                case root:
+                    list.get(i).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            display.setText(Double.toString(Math.sqrt(Double.parseDouble(display.getText().trim()))) + " ");
                         }
                     });
                     break;
@@ -112,7 +133,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            previousValue = Integer.parseInt(display.getText());
+                            previousValue = Double.parseDouble(display.getText());
                             display.setText("");
                             operation = "+";
                         }
@@ -122,7 +143,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            previousValue = Integer.parseInt(display.getText());
+                            previousValue = Double.parseDouble(display.getText());
                             display.setText("");
                             operation = "-";
                         }
@@ -132,7 +153,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            previousValue = Integer.parseInt(display.getText());
+                            previousValue = Double.parseDouble(display.getText());
                             display.setText("");
                             operation = "*";
                         }
@@ -142,7 +163,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            previousValue = Integer.parseInt(display.getText());
+                            previousValue = Double.parseDouble(display.getText());
                             display.setText("");
                             operation = "/";
                         }
@@ -154,21 +175,29 @@ public class CalcController {
                         public void actionPerformed(ActionEvent e) {
                             int secondValue = Integer.parseInt(display.getText());
                             if ("+".equals(operation)) {
-                                display.setText(Integer.toString(previousValue + secondValue));
+                                display.setText(Double.toString(previousValue + secondValue) + " ");
                             }
                             if ("-".equals(operation)) {
-                                display.setText(Integer.toString(previousValue - secondValue));
+                                display.setText(Double.toString(previousValue - secondValue) + " ");
                             }
                             if ("*".equals(operation)) {
-                                display.setText(Integer.toString(previousValue * secondValue));
+                                display.setText(Double.toString(previousValue * secondValue) + " ");
                             }
                             if ("/".equals(operation)) {
-                                display.setText(Integer.toString(previousValue / secondValue));
+                                display.setText(Double.toString(previousValue / secondValue) + " ");
                             }
                         }
                     });
                     break;
             }
         }
+    }
+
+    public static boolean resettingDisplay(String str) {
+        if (str.isEmpty() || str == null) return false;
+        if (str.charAt(str.length() - 1) == ' ') {
+            return true;
+        }
+        return false;
     }
 }
