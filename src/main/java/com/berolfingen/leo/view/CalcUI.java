@@ -12,7 +12,7 @@ public class CalcUI extends JFrame {
 
     public CalcUI(String title) {
         this.title = title;
-        setBounds(300, 300, 300, 300);
+        setBounds(350, 350, 350, 350);
         setLayout(new BorderLayout());
         setVisible(true);
     }

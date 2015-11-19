@@ -16,7 +16,7 @@ public class CalcController {
     public static List<ActionEvent> actions = new ArrayList<>();
 
     //если только ноль, то не добавляем еще нули
-    public static void addListenersToButtons(ArrayList<JButton> list, JTextArea display) {
+    public static void addListenersToButtons(ArrayList<JButton> list, final JTextArea display) {
         for (int i = 0; i < list.size(); i++) {
             switch (list.get(i).getText()) {
                 case "0":
@@ -110,6 +110,16 @@ public class CalcController {
                         }
                     });
                     break;
+                case ".":
+                    list.get(i).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            if (resettingDisplay(display.getText())) display.setText("0");
+                            if (display.getText().contains(".")) return;
+                            display.setText(display.getText() + ".");
+                        }
+                    });
+                    break;
                 case "C":
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
@@ -124,12 +134,26 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            display.setText(Double.toString(Math.sqrt(Double.parseDouble(display.getText().trim()))) + " ");
+                            try {
+                                display.setText(Double.toString(MethodCalc.squareRoot(Double.parseDouble(display.getText().trim()))));
+                            } catch (NumberFormatException ex) {
+                                display.setText("You can not take the root of the number that is less than zero");
+                                int delay = 1000;
+                                ActionListener taskPerformer = new ActionListener() {
+                                    public void actionPerformed(ActionEvent evt) {
+                                        display.setText("0 ");
+                                    }
+                                };
+                                Timer myTimer = new Timer(delay, taskPerformer);
+                                myTimer.setRepeats(false);
+                                myTimer.start();
+                            }
+                            //display.setText(Double.toString(Math.sqrt(Double.parseDouble(display.getText().trim()))) + " ");
                         }
                     });
                     break;
                 case "+":
-                    //todo: сделать, чтобы работало и без очищения экрана и float
+                    //todo: сделать, чтобы работало и без очищения экрана
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -173,18 +197,21 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            int secondValue = Integer.parseInt(display.getText());
-                            if ("+".equals(operation)) {
-                                display.setText(Double.toString(previousValue + secondValue) + " ");
-                            }
-                            if ("-".equals(operation)) {
-                                display.setText(Double.toString(previousValue - secondValue) + " ");
-                            }
-                            if ("*".equals(operation)) {
-                                display.setText(Double.toString(previousValue * secondValue) + " ");
-                            }
-                            if ("/".equals(operation)) {
-                                display.setText(Double.toString(previousValue / secondValue) + " ");
+                            double secondValue = Double.parseDouble(display.getText());
+                            try {
+                                display.setText(Double.toString(MethodCalc.sumMinDivMul(previousValue, secondValue, operation)) + " ");
+                            } catch (NumberFormatException ex) {
+                                display.setText("You can not divide by zero");
+
+                                int delay = 1000;
+                                ActionListener taskPerformer = new ActionListener() {
+                                    public void actionPerformed(ActionEvent evt) {
+                                        display.setText("0 ");
+                                    }
+                                };
+                                Timer myTimer = new Timer(delay, taskPerformer);
+                                myTimer.setRepeats(false);
+                                myTimer.start();
                             }
                         }
                     });
