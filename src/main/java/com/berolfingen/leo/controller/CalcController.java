@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 public class CalcController {
@@ -15,7 +14,6 @@ public class CalcController {
 
     public static List<ActionEvent> actions = new ArrayList<>();
 
-    //если только ноль, то не добавляем еще нули
     public static void addListenersToButtons(ArrayList<JButton> list, final JTextArea display) {
         for (int i = 0; i < list.size(); i++) {
             switch (list.get(i).getText()) {
@@ -148,12 +146,10 @@ public class CalcController {
                                 myTimer.setRepeats(false);
                                 myTimer.start();
                             }
-                            //display.setText(Double.toString(Math.sqrt(Double.parseDouble(display.getText().trim()))) + " ");
                         }
                     });
                     break;
                 case "+":
-                    //todo: сделать, чтобы работало и без очищения экрана
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -199,7 +195,7 @@ public class CalcController {
                         public void actionPerformed(ActionEvent e) {
                             double secondValue = Double.parseDouble(display.getText());
                             try {
-                                display.setText(Double.toString(MethodCalc.sumMinDivMul(previousValue, secondValue, operation)) + " ");
+                                display.setText(Double.toString(MethodCalc.chooseOperation(previousValue, secondValue, operation)) + " ");
                             } catch (NumberFormatException ex) {
                                 display.setText("You can not divide by zero");
 

@@ -4,10 +4,10 @@ import com.berolfingen.leo.view.CalcUI;
 
 
 public class Main {
-    //добавить логи и тесты
+    //todo add logs and tests
     public static void main(String[] args) {
 
-        CalcUI calcUI = new CalcUI("Calculator"); //добавить возможность изменить размеры окна
+        CalcUI calcUI = new CalcUI("Calculator");
         calcUI.getjFrameWithButtons();
     }
 }
