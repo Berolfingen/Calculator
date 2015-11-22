@@ -9,6 +9,7 @@ import java.util.List;
 public class CalcController {
 
     private static double previousValue = 0;
+    private static double secondValue = Double.MIN_VALUE;
     private static String operation = "";
     private static final String root = "\u221A";
 
@@ -112,7 +113,8 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            if (resettingDisplay(display.getText())||display.getText().isEmpty()) display.setText("0");
+                            if (resettingDisplay(display.getText()) || display.getText().isEmpty())
+                                display.setText("0");
                             if (display.getText().contains(".")) return;
                             display.setText(display.getText() + ".");
                         }
@@ -124,7 +126,9 @@ public class CalcController {
                         public void actionPerformed(ActionEvent e) {
                             if (resettingDisplay(display.getText())) display.setText("");
                             String temp = display.getText();
-                            if (temp.length() > 0) display.setText(temp.substring(0, temp.length() - 1));
+                            if (temp.length() > 0) display.setText(temp.substring(0, temp.length() - 1)+" ");
+                            previousValue = 0;
+                            secondValue = 1;
                         }
                     });
                     break;
@@ -133,7 +137,7 @@ public class CalcController {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             try {
-                                display.setText(setTextWithoutZero(MethodCalc.squareRoot(Double.parseDouble(display.getText().trim())))+" ");
+                                display.setText(setTextWithoutZero(MethodCalc.squareRoot(Double.parseDouble(display.getText().trim()))) + " ");
                             } catch (NumberFormatException ex) {
                                 display.setText("You can not take the root of the number that is less than zero");
                                 int delay = 1000;
@@ -154,6 +158,7 @@ public class CalcController {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             previousValue = Double.parseDouble(display.getText());
+                            secondValue = Double.MIN_VALUE;
                             display.setText("");
                             operation = "+";
                         }
@@ -164,6 +169,7 @@ public class CalcController {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             previousValue = Double.parseDouble(display.getText());
+                            secondValue = Double.MIN_VALUE;
                             display.setText("");
                             operation = "-";
                         }
@@ -174,6 +180,7 @@ public class CalcController {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             previousValue = Double.parseDouble(display.getText());
+                            secondValue = Double.MIN_VALUE;
                             display.setText("");
                             operation = "*";
                         }
@@ -184,6 +191,7 @@ public class CalcController {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             previousValue = Double.parseDouble(display.getText());
+                            secondValue = Double.MIN_VALUE;
                             display.setText("");
                             operation = "/";
                         }
@@ -193,9 +201,10 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            double secondValue = Double.parseDouble(display.getText());
+                            if (secondValue == Double.MIN_VALUE) secondValue = Double.parseDouble(display.getText());
                             try {
                                 display.setText(setTextWithoutZero(MethodCalc.chooseOperation(previousValue, secondValue, operation)) + " ");
+                                previousValue = Double.parseDouble(display.getText());
                             } catch (NumberFormatException ex) {
                                 display.setText("You can not divide by zero");
 
@@ -224,10 +233,13 @@ public class CalcController {
         return false;
     }
 
-    public static String setTextWithoutZero(double d){
+    public static String setTextWithoutZero(double d) {
         String result;
-        if ((long) d == d) {result = "" + (long) d;}
-        else {result = "" + d;}
+        if ((long) d == d) {
+            result = "" + (long) d;
+        } else {
+            result = "" + d;
+        }
         return result;
     }
 }
