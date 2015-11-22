@@ -6,10 +6,8 @@ public class MethodCalc {
         switch (operation) {
             case "+":
                 return sum(first, second);
-
             case "-":
                 return minus(first, second);
-
             case "/":
                 return divide(first, second);
             case "*":
