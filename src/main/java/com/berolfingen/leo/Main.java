@@ -4,10 +4,11 @@ import com.berolfingen.leo.view.CalcUI;
 
 
 public class Main {
-    //todo add logs and tests
+    public static final String MAIN_WINDOW = "Calculator";
+
     public static void main(String[] args) {
 
-        CalcUI calcUI = new CalcUI("Calculator");
+        CalcUI calcUI = new CalcUI(MAIN_WINDOW);
         calcUI.getjFrameWithButtons();
     }
 }
