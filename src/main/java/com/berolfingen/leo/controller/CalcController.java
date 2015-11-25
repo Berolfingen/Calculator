@@ -6,6 +6,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.berolfingen.leo.view.CalcUI.ADD_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.SUB_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.MUL_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.DIV_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.CALCULATE_BUTTON;
+
 public class CalcController {
 
     private static double previousValue = 0;
@@ -15,7 +21,7 @@ public class CalcController {
 
     public static List<ActionEvent> actions = new ArrayList<>();
 
-    public static void addListenersToButtons(ArrayList<JButton> list, final JTextArea display) {
+    public static void addListenersToButtons(ArrayList<JButton> list, final JTextField display) {
         for (int i = 0; i < list.size(); i++) {
             switch (list.get(i).getText()) {
                 case "0":
@@ -126,7 +132,7 @@ public class CalcController {
                         public void actionPerformed(ActionEvent e) {
                             if (resettingDisplay(display.getText())) display.setText("");
                             String temp = display.getText();
-                            if (temp.length() > 0) display.setText(temp.substring(0, temp.length() - 1)+" ");
+                            if (temp.length() > 0) display.setText(temp.substring(0, temp.length() - 1) + " ");
                             previousValue = 0;
                             secondValue = 1;
                         }
@@ -153,7 +159,7 @@ public class CalcController {
                         }
                     });
                     break;
-                case "+":
+                case ADD_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -164,7 +170,7 @@ public class CalcController {
                         }
                     });
                     break;
-                case "-":
+                case SUB_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -175,7 +181,7 @@ public class CalcController {
                         }
                     });
                     break;
-                case "*":
+                case MUL_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -186,7 +192,7 @@ public class CalcController {
                         }
                     });
                     break;
-                case "/":
+                case DIV_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -197,7 +203,7 @@ public class CalcController {
                         }
                     });
                     break;
-                case "=":
+                case CALCULATE_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
