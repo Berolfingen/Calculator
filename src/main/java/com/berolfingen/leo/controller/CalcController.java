@@ -11,6 +11,9 @@ import static com.berolfingen.leo.view.CalcUI.SUB_BUTTON;
 import static com.berolfingen.leo.view.CalcUI.MUL_BUTTON;
 import static com.berolfingen.leo.view.CalcUI.DIV_BUTTON;
 import static com.berolfingen.leo.view.CalcUI.CALCULATE_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.BACKSPACE_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.ROOT_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.DOT_BUTTON;
 
 public class CalcController {
 
@@ -115,7 +118,7 @@ public class CalcController {
                         }
                     });
                     break;
-                case ".":
+                case DOT_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -126,7 +129,7 @@ public class CalcController {
                         }
                     });
                     break;
-                case "C":
+                case BACKSPACE_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -138,7 +141,7 @@ public class CalcController {
                         }
                     });
                     break;
-                case root:
+                case ROOT_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {

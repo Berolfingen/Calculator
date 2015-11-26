@@ -8,13 +8,23 @@ import java.util.*;
 import java.util.List;
 
 public class CalcUI extends JFrame {
-    private static final String root = "\u221A";
+
     public static final String ADD_BUTTON = "+";
     public static final String SUB_BUTTON = "-";
     public static final String MUL_BUTTON = "*";
     public static final String DIV_BUTTON = "\\";
     public static final String CALCULATE_BUTTON = "=";
     public static final String DISPLAY = "display";
+    public static final String BACKSPACE_BUTTON = "C";
+    public static final String PERCENT_BUTTON = "%";
+    public static final String ROOT_BUTTON = "\u221A";
+    public static final String ON_BUTTON = "on";
+    public static final String OFF_BUTTON = "off";
+    public static final String SIN_BUTTON = "sin";
+    public static final String COS_BUTTON = "cos";
+    public static final String LOG_BUTTON = "log";
+    public static final String DOT_BUTTON = ".";
+
     private String title;
 
     public CalcUI(String title) {
@@ -50,35 +60,25 @@ public class CalcUI extends JFrame {
 
     public static ArrayList<JButton> getButtons() {
         ArrayList<JButton> buttons = new ArrayList<>();
+
         createAddDigitButtons(buttons);
         createAddNewButton(ADD_BUTTON, buttons);
         createAddNewButton(SUB_BUTTON, buttons);
         createAddNewButton(DIV_BUTTON, buttons);
         createAddNewButton(MUL_BUTTON, buttons);
         createAddNewButton(CALCULATE_BUTTON, buttons);
-        JButton buttonBack = new JButton("C");
-        JButton buttonPerc = new JButton("%");
-        JButton buttonRoot = new JButton(root);
-        JButton buttonOn = new JButton("on");
-        JButton buttonOff = new JButton("off");
-        JButton buttonSin = new JButton("sin");
-        JButton buttonCos = new JButton("cos");
-        JButton buttonPoint = new JButton(".");
-        JButton buttonLog = new JButton("log");
-
-        buttons.add(buttonOn);
-        buttons.add(buttonOff);
-        buttons.add(buttonRoot);
-        buttons.add(buttonPoint);
-        buttons.add(buttonPerc);
-        buttons.add(buttonSin);
-        buttons.add(buttonCos);
-        buttons.add(buttonBack);
-        buttons.add(buttonLog);
+        createAddNewButton(BACKSPACE_BUTTON, buttons);
+        createAddNewButton(PERCENT_BUTTON, buttons);
+        createAddNewButton(ROOT_BUTTON, buttons);
+        createAddNewButton(ON_BUTTON, buttons);
+        createAddNewButton(OFF_BUTTON, buttons);
+        createAddNewButton(SIN_BUTTON, buttons);
+        createAddNewButton(COS_BUTTON, buttons);
+        createAddNewButton(LOG_BUTTON, buttons);
+        createAddNewButton(DOT_BUTTON, buttons);
 
         return buttons;
     }
-
 
     public void getjFrameWithButtons() {
         JTextField display = new JTextField();
@@ -98,6 +98,4 @@ public class CalcUI extends JFrame {
 
         CalcController.addListenersToButtons(buttons, display);
     }
-
-
 }
