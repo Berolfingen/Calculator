@@ -1,5 +1,7 @@
 package com.berolfingen.leo.controller;
 
+import com.berolfingen.leo.view.CalcUI;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +33,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "0");
                         }
@@ -41,6 +44,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "1");
                         }
@@ -50,6 +54,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "2");
                         }
@@ -59,6 +64,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "3");
                         }
@@ -68,6 +74,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "4");
                         }
@@ -77,6 +84,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "5");
                         }
@@ -86,6 +94,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "6");
                         }
@@ -95,6 +104,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "7");
                         }
@@ -104,6 +114,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "8");
                         }
@@ -113,6 +124,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
                             display.setText(display.getText() + "9");
                         }
@@ -122,6 +134,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText()) || display.getText().isEmpty())
                                 display.setText("0");
                             if (display.getText().contains(".")) return;
@@ -166,6 +179,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(false);
                             previousValue = Double.parseDouble(display.getText());
                             secondValue = Double.MIN_VALUE;
                             display.setText("");
@@ -177,6 +191,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(false);
                             previousValue = Double.parseDouble(display.getText());
                             secondValue = Double.MIN_VALUE;
                             display.setText("");
@@ -188,6 +203,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(false);
                             previousValue = Double.parseDouble(display.getText());
                             secondValue = Double.MIN_VALUE;
                             display.setText("");
@@ -199,6 +215,7 @@ public class CalcController {
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            CalcUI.updateCalculateButton(false);
                             previousValue = Double.parseDouble(display.getText());
                             secondValue = Double.MIN_VALUE;
                             display.setText("");

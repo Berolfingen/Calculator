@@ -11,13 +11,9 @@ import com.objogate.wl.swing.gesture.GesturePerformer;
 import javax.swing.*;
 
 import static com.berolfingen.leo.Main.MAIN_WINDOW;
-import static com.berolfingen.leo.view.CalcUI.ADD_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.SUB_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.MUL_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.DIV_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.CALCULATE_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.DISPLAY;
 
+import static com.berolfingen.leo.view.CalcUI.*;
+import static com.objogate.wl.gesture.Gestures.*;
 import static org.hamcrest.Matchers.equalTo;
 
 public class CalculatorDriver extends JFrameDriver {
@@ -59,12 +55,16 @@ public class CalculatorDriver extends JFrameDriver {
         button(DIV_BUTTON).click();
     }
 
-    public void performCalculation() {
-        calculate().click();
+    public void clickDotButton() {
+        button(DOT_BUTTON).click();
     }
 
-    public JButtonDriver calculate() {
-        return button(CALCULATE_BUTTON);
+    public void clickRootButton() {
+        button(ROOT_BUTTON).click();
+    }
+
+    public void performCalculation() {
+        button(CALCULATE_BUTTON).click();
     }
 
     public void displaysNumber(String expectedResult) {

@@ -1,6 +1,8 @@
 package com.berolfingen.leo.view;
 
 import com.berolfingen.leo.controller.CalcController;
+import com.objogate.wl.swing.driver.ComponentDriver;
+import com.objogate.wl.swing.driver.JButtonDriver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,6 +28,7 @@ public class CalcUI extends JFrame {
     public static final String DOT_BUTTON = ".";
 
     private String title;
+    private static JButton calcButton = new JButton(CALCULATE_BUTTON);
 
     public CalcUI(String title) {
         this.title = title;
@@ -66,7 +69,8 @@ public class CalcUI extends JFrame {
         createAddNewButton(SUB_BUTTON, buttons);
         createAddNewButton(DIV_BUTTON, buttons);
         createAddNewButton(MUL_BUTTON, buttons);
-        createAddNewButton(CALCULATE_BUTTON, buttons);
+        calcButton.setName(CALCULATE_BUTTON);
+        buttons.add(calcButton);
         createAddNewButton(BACKSPACE_BUTTON, buttons);
         createAddNewButton(PERCENT_BUTTON, buttons);
         createAddNewButton(ROOT_BUTTON, buttons);
@@ -98,4 +102,10 @@ public class CalcUI extends JFrame {
 
         CalcController.addListenersToButtons(buttons, display);
     }
+
+    public static void updateCalculateButton(boolean isEnabled) {
+       calcButton.setEnabled(isEnabled);
+    }
+
+
 }
