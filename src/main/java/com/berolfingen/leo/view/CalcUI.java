@@ -20,8 +20,6 @@ public class CalcUI extends JFrame {
     public static final String BACKSPACE_BUTTON = "C";
     public static final String PERCENT_BUTTON = "%";
     public static final String ROOT_BUTTON = "\u221A";
-    public static final String ON_BUTTON = "on";
-    public static final String OFF_BUTTON = "off";
     public static final String SIN_BUTTON = "sin";
     public static final String COS_BUTTON = "cos";
     public static final String LOG_BUTTON = "log";
@@ -74,8 +72,6 @@ public class CalcUI extends JFrame {
         createAddNewButton(BACKSPACE_BUTTON, buttons);
         createAddNewButton(PERCENT_BUTTON, buttons);
         createAddNewButton(ROOT_BUTTON, buttons);
-        createAddNewButton(ON_BUTTON, buttons);
-        createAddNewButton(OFF_BUTTON, buttons);
         createAddNewButton(SIN_BUTTON, buttons);
         createAddNewButton(COS_BUTTON, buttons);
         createAddNewButton(LOG_BUTTON, buttons);
@@ -106,6 +102,5 @@ public class CalcUI extends JFrame {
     public static void updateCalculateButton(boolean isEnabled) {
        calcButton.setEnabled(isEnabled);
     }
-
 
 }

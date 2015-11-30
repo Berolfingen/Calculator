@@ -93,5 +93,23 @@ public class MethodCalcTest {
     public void testSquareRoot1() throws Exception {
         double result = MethodCalc.squareRoot(-1);
     }
+
+    @Test
+    public void testCos(){
+        double result = MethodCalc.cos(0);
+        assertEquals(1,result, 0.01);
+    }
+
+    @Test
+    public void testCos1(){
+        double result = MethodCalc.cos(180);
+        assertEquals(-1,result, 0.01);
+    }
+
+    @Test
+    public void testCos2(){
+        double result = MethodCalc.cos(90);
+        assertEquals(0,result, 0.01);
+    }
 }
 

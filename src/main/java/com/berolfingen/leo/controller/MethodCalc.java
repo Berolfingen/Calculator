@@ -39,4 +39,9 @@ public class MethodCalc {
         if (figure < 0) throw new NumberFormatException();
         else return Math.sqrt(figure);
     }
+
+    public static double cos(double figure) {
+        if(figure%180==90||figure%180==-90)return 0;
+        return Math.cos(Math.toRadians(figure));
+    }
 }

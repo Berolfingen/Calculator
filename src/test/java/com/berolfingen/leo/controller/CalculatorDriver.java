@@ -63,6 +63,10 @@ public class CalculatorDriver extends JFrameDriver {
         button(ROOT_BUTTON).click();
     }
 
+    public void clickCosButton() {
+        button(COS_BUTTON).click();
+    }
+
     public void performCalculation() {
         button(CALCULATE_BUTTON).click();
     }

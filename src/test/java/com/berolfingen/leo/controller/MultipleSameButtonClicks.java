@@ -5,7 +5,7 @@ import org.junit.Test;
 import static com.objogate.wl.swing.driver.ComponentDriver.enabled;
 import static org.hamcrest.Matchers.not;
 
-public class MultipleSameButtonClicksTest extends CalculatorTestCase {
+public class MultipleSameButtonClicks extends CalculatorTestCase {
     @Test
     public void multipleSum() {
         calculatorUI.clickDigitButton(0);

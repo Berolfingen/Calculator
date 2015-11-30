@@ -16,6 +16,7 @@ import static com.berolfingen.leo.view.CalcUI.CALCULATE_BUTTON;
 import static com.berolfingen.leo.view.CalcUI.BACKSPACE_BUTTON;
 import static com.berolfingen.leo.view.CalcUI.ROOT_BUTTON;
 import static com.berolfingen.leo.view.CalcUI.DOT_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.COS_BUTTON;
 
 public class CalcController {
 
@@ -35,9 +36,9 @@ public class CalcController {
                         public void actionPerformed(ActionEvent e) {
                             CalcUI.updateCalculateButton(true);
                             if (resettingDisplay(display.getText())) display.setText("");
+                            if (display.getText().trim().equals("0")) return;
                             display.setText(display.getText() + "0");
                         }
-
                     });
                     break;
                 case "1":
@@ -223,6 +224,14 @@ public class CalcController {
                         }
                     });
                     break;
+                case COS_BUTTON:
+                    list.get(i).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            display.setText(setTextWithoutZero(MethodCalc.cos(Double.parseDouble(display.getText().trim()))) + " ");
+                        }
+                    });
+                    break;
                 case CALCULATE_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
@@ -253,7 +262,7 @@ public class CalcController {
 
     public static boolean resettingDisplay(String str) {
         if (str.isEmpty() || str == null) return false;
-        if (str.charAt(str.length() - 1) == ' ') {
+        if (str.charAt(str.length() - 1) == ' '||(str.trim().equals("0"))) {
             return true;
         }
         return false;
