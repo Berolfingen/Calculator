@@ -67,6 +67,14 @@ public class CalculatorDriver extends JFrameDriver {
         button(COS_BUTTON).click();
     }
 
+    public void clickSinButton(){
+        button(SIN_BUTTON).click();
+    }
+
+    public void clickLogButton() {button(LOG_BUTTON).click();}
+
+    public void clickPercentButton() {button(PERCENT_BUTTON).click();}
+
     public void performCalculation() {
         button(CALCULATE_BUTTON).click();
     }

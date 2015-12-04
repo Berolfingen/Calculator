@@ -8,25 +8,25 @@ public class MethodCalcTest {
 
     @Test
     public void testChooseOperation() throws Exception {
-        double result = MethodCalc.chooseOperation(1,1,"+");
+        double result = MethodCalc.chooseOperation(1, 1, "+");
         assertEquals(2, result, 0.01);
     }
 
     @Test
     public void testChooseOperation1() throws Exception {
-        double result = MethodCalc.chooseOperation(1,1,"-");
+        double result = MethodCalc.chooseOperation(1, 1, "-");
         assertEquals(0, result, 0.01);
     }
 
     @Test
     public void testChooseOperation2() throws Exception {
-        double result = MethodCalc.chooseOperation(1,1,"/");
+        double result = MethodCalc.chooseOperation(1, 1, "/");
         assertEquals(1, result, 0.01);
     }
 
     @Test
     public void testChooseOperation3() throws Exception {
-        double result = MethodCalc.chooseOperation(1,1,"*");
+        double result = MethodCalc.chooseOperation(1, 1, "*");
         assertEquals(1, result, 0.01);
     }
 
@@ -95,21 +95,55 @@ public class MethodCalcTest {
     }
 
     @Test
-    public void testCos(){
+    public void testCos() {
         double result = MethodCalc.cos(0);
-        assertEquals(1,result, 0.01);
+        assertEquals(1, result, 0.01);
     }
 
     @Test
-    public void testCos1(){
+    public void testCos1() {
         double result = MethodCalc.cos(180);
-        assertEquals(-1,result, 0.01);
+        assertEquals(-1, result, 0.01);
     }
 
     @Test
-    public void testCos2(){
+    public void testCos2() {
         double result = MethodCalc.cos(90);
-        assertEquals(0,result, 0.01);
+        assertEquals(0, result, 0.01);
+    }
+
+    @Test
+    public void testSin() {
+        double result = MethodCalc.sin(0);
+        assertEquals(0, result, 0.01);
+    }
+
+    @Test
+    public void testSin1() {
+        double result = MethodCalc.sin(90);
+        assertEquals(1, result, 0.01);
+    }
+
+    @Test
+    public void testSin2() {
+        double result = MethodCalc.sin(270);
+        assertEquals(-1, result, 0.01);
+    }
+
+    @Test
+    public void testLog() {
+        double result = MethodCalc.log(100);
+        assertEquals(2, result, 0.01);
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testLog1() throws Exception {
+        double result = MethodCalc.log(-1);
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testLog2() throws Exception {
+        double result = MethodCalc.log(0);
     }
 }
 

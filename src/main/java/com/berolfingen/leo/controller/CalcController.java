@@ -8,15 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.berolfingen.leo.view.CalcUI.ADD_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.SUB_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.MUL_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.DIV_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.CALCULATE_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.BACKSPACE_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.ROOT_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.DOT_BUTTON;
-import static com.berolfingen.leo.view.CalcUI.COS_BUTTON;
+import static com.berolfingen.leo.view.CalcUI.*;
 
 public class CalcController {
 
@@ -232,6 +224,43 @@ public class CalcController {
                         }
                     });
                     break;
+                case SIN_BUTTON:
+                    list.get(i).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            display.setText(setTextWithoutZero(MethodCalc.sin(Double.parseDouble(display.getText().trim()))) + " ");
+                        }
+                    });
+                    break;
+                case LOG_BUTTON:
+                    list.get(i).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try {
+                                display.setText(setTextWithoutZero(MethodCalc.log(Double.parseDouble(display.getText().trim()))) + " ");
+                            }catch (NumberFormatException ex) {
+                                display.setText("You can not take the log of the number that is less or equal zero");
+                                int delay = 1000;
+                                ActionListener taskPerformer = new ActionListener() {
+                                    public void actionPerformed(ActionEvent evt) {
+                                        display.setText("0 ");
+                                    }
+                                };
+                                Timer myTimer = new Timer(delay, taskPerformer);
+                                myTimer.setRepeats(false);
+                                myTimer.start();
+                            }
+                        }
+                    });
+                    break;
+                case PERCENT_BUTTON:
+                    list.get(i).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            
+                        }
+                    });
+                    break;
                 case CALCULATE_BUTTON:
                     list.get(i).addActionListener(new ActionListener() {
                         @Override
@@ -262,7 +291,7 @@ public class CalcController {
 
     public static boolean resettingDisplay(String str) {
         if (str.isEmpty() || str == null) return false;
-        if (str.charAt(str.length() - 1) == ' '||(str.trim().equals("0"))) {
+        if (str.charAt(str.length() - 1) == ' ' || (str.trim().equals("0"))) {
             return true;
         }
         return false;

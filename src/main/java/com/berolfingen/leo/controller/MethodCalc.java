@@ -41,7 +41,16 @@ public class MethodCalc {
     }
 
     public static double cos(double figure) {
-        if(figure%180==90||figure%180==-90)return 0;
+        if (figure % 180 == 90 || figure % 180 == -90) return 0;
         return Math.cos(Math.toRadians(figure));
+    }
+
+    public static double sin(double figure) {
+        return Math.sin(Math.toRadians(figure));
+    }
+
+    public static double log(double figure) throws NumberFormatException {
+        if (figure <= 0) throw new NumberFormatException();
+        return Math.log10(figure);
     }
 }
